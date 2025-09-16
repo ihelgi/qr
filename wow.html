@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <title>Random Cat</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      background: #f5f5f5;
+      font-family: sans-serif;
+    }
+    img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 15px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <img id="cat" src="" alt="Loading a random cat...">
+  <script>
+    async function loadCat() {
+      const res = await fetch("https://api.thecatapi.com/v1/images/search");
+      const data = await res.json();
+      document.getElementById("cat").src = data[0].url;
+    }
+    loadCat();
+  </script>
+</body>
+</html>
